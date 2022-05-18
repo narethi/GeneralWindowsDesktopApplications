@@ -10,3 +10,6 @@
 * **GIVEN** a configuration pattern **WHEN** reading the logfile **THEN** break the log file into the components outlined in the configuration pattern
 * **GIVEN** a parsed log file, broken down by the pattern **WHEN** read into the application **THEN** allow filtering on each component of the log file
 * **GIVEN** an open log file **WHEN** the file is updated outside of the reader **THEN** reload the log file into the log reader application
+
+## Constraints
+* The log files that are read and interpreted will adhere to a single template string

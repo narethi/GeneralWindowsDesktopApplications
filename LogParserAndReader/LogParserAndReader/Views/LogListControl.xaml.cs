@@ -1,6 +1,4 @@
-﻿using LogParserAndReader.Parsers;
-using LogParserAndReader.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,18 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LogParserAndReader
+namespace LogParserAndReader.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LogListControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LogListControl : UserControl
     {
-        private readonly MainWindowViewModel _viewModel;
-        public MainWindow(MainWindowViewModel viewModel)
+        public LogListControl()
         {
-            _viewModel = viewModel;
-            DataContext = _viewModel;
             InitializeComponent();
         }
     }
