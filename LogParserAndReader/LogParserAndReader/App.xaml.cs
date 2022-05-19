@@ -1,4 +1,6 @@
 ﻿using LogParserAndReader.Controllers;
+using LogParserAndReader.Exceptions;
+using LogParserAndReader.Views;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -17,11 +19,16 @@ namespace LogParserAndReader
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var test = ApplicationConfigurations.Instance.ReadLogFileTemplateFromFile("Test.template");
-            var logFileController = new LogFileController();
-            logFileController.ReadFile("Test.Log");
-            var mainWindow = new MainWindow(new ViewModels.MainWindowViewModel(logFileController));
-            mainWindow.Show();
+
+            if(ApplicationConfigurations.Instance.ReadLogFileTemplateFromFile("Test.template"))
+            {
+                var logFileController = new LogFileController();
+                logFileController.ReadFile("Test.Log");
+                var mainWindow = new MainWindow(new ViewModels.MainWindowViewModel(logFileController));
+                mainWindow.Show();
+            }
+            else
+                throw new FailedApplicationStartUpException();
         }
     }
 }

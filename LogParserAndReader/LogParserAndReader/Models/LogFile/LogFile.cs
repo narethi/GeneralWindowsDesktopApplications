@@ -11,10 +11,12 @@ namespace LogParserAndReader.Models.LogFile
     /// </summary>
     public class LogFile
     {
-        private readonly List<LogFileEntry> logFileEntries = new List<LogFileEntry>();
+        private readonly List<LogFileEntry> _logFileEntries = new List<LogFileEntry>();
         public void AddEntryToFile(LogFileEntry entry)
         {
-            logFileEntries.Add(entry);
+            _logFileEntries.Add(entry);
         }
+
+        public List<LogFileEntry> LogFileEntries => new List<LogFileEntry>(_logFileEntries);
     }
 }

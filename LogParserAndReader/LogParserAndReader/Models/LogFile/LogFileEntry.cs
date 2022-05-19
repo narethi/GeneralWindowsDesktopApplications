@@ -13,5 +13,7 @@ namespace LogParserAndReader.Models.LogFile
         {
             _logFileProperties.Add(property);
         }
+
+        public List<LogFileProperty> LogFileProperties => new List<LogFileProperty>(_logFileProperties);
     }
 }

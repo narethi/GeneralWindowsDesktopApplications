@@ -45,7 +45,7 @@ namespace LogParserAndReader.Parsers
 
             var stringToProcess = values?[0] ?? string.Empty;
 
-            return new() { PropertyType = propertyTemplate.PropertyType, PropertyValue = stringToProcess };
+            return new() { PropertyType = propertyTemplate.PropertyType, PropertyValue = stringToProcess, PropertyName =  propertyTemplate.PropertyName};
         }
 
         public static LogFile ReadLogData(string fileContents)
