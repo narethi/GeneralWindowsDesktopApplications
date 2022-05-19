@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <DataGrid x:Name="LogEntryList" AlternationCount="2" BorderThickness="0" BorderBrush="Transparent" Width="Auto">
+        <DataGrid x:Name="LogEntryList" AlternationCount="2" BorderThickness="0" BorderBrush="Transparent" Width="Auto" GridLinesVisibility="None">
             <DataGrid.Resources>
                 <Style TargetType="DataGridCell">
                     <Setter Property="Margin" Value="0,0,0,0"/>

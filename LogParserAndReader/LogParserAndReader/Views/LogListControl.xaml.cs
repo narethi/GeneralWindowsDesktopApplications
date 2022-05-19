@@ -38,6 +38,9 @@ namespace LogParserAndReader.Views
         /// <summary>
         /// Reads the data from the loaded log file and then constructs the list control to display the log file data
         /// </summary>
+        /// <remarks>
+        /// This can move to the view model, the DataTable object isn't a UIElement and can be bound to the DataGrid
+        /// </remarks>
         private void ConstructListControl()
         {
             /*
@@ -50,8 +53,6 @@ namespace LogParserAndReader.Views
             DataTable table = new(); 
             var template = ApplicationConfigurations.Instance.LogFileTemplate;
 
-            var testGrid = new GridView();
-
             foreach (var listColumn in template)
             {
 
@@ -59,10 +60,6 @@ namespace LogParserAndReader.Views
                 {
                     ColumnName = listColumn.PropertyName,
                     ReadOnly = true,
-                });
-                testGrid.Columns.Add(new GridViewColumn()
-                {
-                    Header = listColumn.PropertyName,
                 });
             }
 
@@ -77,7 +74,6 @@ namespace LogParserAndReader.Views
             }
             
             LogEntryList.ItemsSource = table.DefaultView;
-            LogEntryList.GridLinesVisibility = DataGridGridLinesVisibility.None;
         }
 
         private static void OnDependencyPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
