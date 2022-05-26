@@ -50,5 +50,25 @@ namespace SimpleUIElements.Views
                 Window.GetWindow(this).DragMove();
             }
         }
+
+        private void CloseWindowMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Window.GetWindow(this).Close();
+        }
+
+        private void MinimizeWindowMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Window.GetWindow(this).WindowState = WindowState.Minimized;
+        }
+
+        private void MaximizeWindowMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Window.GetWindow(this).WindowState = WindowState.Maximized;
+        }
+
+        private void RestoreWindowMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Window.GetWindow(this).WindowState = WindowState.Normal;
+        }
     }
 }

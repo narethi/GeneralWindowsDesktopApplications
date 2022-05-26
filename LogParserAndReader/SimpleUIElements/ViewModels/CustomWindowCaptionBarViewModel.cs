@@ -28,15 +28,22 @@ namespace SimpleUIElements.ViewModels
             set
             {
                 _isWindowMaximized = value;
-                OnPropertyChanged(nameof(ApplicationIconVerticalAlignment));
+                OnPropertyChanged(nameof(RestoreWindowButtonVisibility));
+                OnPropertyChanged(nameof(MaximizeWindowButtonVisibility));
             }
         }
 
         /// <summary>
-        /// This will set the vertical position of the size toolbar, if the window is maximized center the tool bar as there is a
-        /// bug in windows that causes the tool bar to get pushed up
+        /// This will set the visibility of the Restore Window Visibility (If the window is maximized show the button)
         /// </summary>
-        public VerticalAlignment ApplicationIconVerticalAlignment => _isWindowMaximized ? VerticalAlignment.Center : VerticalAlignment.Center;
+        public Visibility RestoreWindowButtonVisibility => _isWindowMaximized ? Visibility.Visible : Visibility.Collapsed;
+
+        /// <summary>
+        /// This will set the visibility of the Maximize Window Visibility (If the window is not maximized show the button)
+        /// </summary>
+        public Visibility MaximizeWindowButtonVisibility => _isWindowMaximized ? Visibility.Collapsed : Visibility.Visible;
+
+
 
         #region INotifyPropertyChanged Implementation
 

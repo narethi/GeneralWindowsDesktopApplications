@@ -8,13 +8,14 @@
              Loaded="CustomWindowCaptionBar_Loaded" 
              Unloaded="CustomWindowCaptionBar_UnLoaded"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid MouseDown="DragWindow" DockPanel.Dock="Top" Height="32" Margin="0,0,0,0" Background="{Binding SystemWindowColor}">
+    <Grid MouseDown="DragWindow" DockPanel.Dock="Top" Height="30" Margin="0,0,0,0" Background="{Binding SystemWindowColor}">
         <Grid.ContextMenu>
-            <ContextMenu Width="100">
-                <MenuItem Header="Close" />
-                <MenuItem Header="Minimize" />
-                <MenuItem Header="Maximize" />
-                <MenuItem Header="Restore" />
+            <ContextMenu>
+                <MenuItem Header="Minimize Window" Click="MinimizeWindowMenuItem_Click"/>
+                <MenuItem Header="Maximize Window" Visibility="{Binding MaximizeWindowButtonVisibility}" Click="MaximizeWindowMenuItem_Click"/>
+                <MenuItem Header="Restore Window"  Visibility="{Binding RestoreWindowButtonVisibility}" Click="RestoreWindowMenuItem_Click"/>
+                <Separator />
+                <MenuItem Header="Close Window" Click="CloseWindowMenuItem_Click"/>
             </ContextMenu>
         </Grid.ContextMenu>
         <Grid.ColumnDefinitions>

@@ -15,7 +15,7 @@ namespace SimpleUIElements.Views
             myResourceDictionary.Source =
                 new Uri("/SimpleUIElements;component/WindowResources.xaml",
                         UriKind.RelativeOrAbsolute);
-            var windowStyle = myResourceDictionary["CustomCaptionWindow"];
+            var windowStyle = myResourceDictionary[nameof(CustomCaptionWindow)];
             if (windowStyle != null)
                 Style = (Style)windowStyle;
         }
