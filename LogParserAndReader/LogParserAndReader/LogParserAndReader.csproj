@@ -5,6 +5,107 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <PackageIcon>Better-Application-Icon-128.png</PackageIcon>
+    <ApplicationIcon>ImageResources\Icons\hnet.com-image.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ImageResources\Icons\Application-Icon.png" />
+    <None Remove="ImageResources\Icons\Better-Application-Icon-16.png" />
+    <None Remove="ImageResources\Icons\Better-Application-Icon-256.png" />
+    <None Remove="ImageResources\Icons\Better-Application-Icon-32.png" />
+    <None Remove="ImageResources\Icons\Better-Application-Icon-64.png" />
+    <None Remove="ImageResources\Icons\Better-Application-Icon.png" />
+    <None Remove="ImageResources\Icons\Close-Window-Black-256.png" />
+    <None Remove="ImageResources\Icons\Close-Window-Black-64.png" />
+    <None Remove="ImageResources\Icons\Close-Window-Black.png" />
+    <None Remove="ImageResources\Icons\Close-Window-White-256.png" />
+    <None Remove="ImageResources\Icons\Close-Window-White-64.png" />
+    <None Remove="ImageResources\Icons\Close-Window-White.png" />
+    <None Remove="ImageResources\Icons\Maximize-Window-Black-128.png" />
+    <None Remove="ImageResources\Icons\Maximize-Window-Black-256.png" />
+    <None Remove="ImageResources\Icons\Maximize-Window-Black-64.png" />
+    <None Remove="ImageResources\Icons\Maximize-Window-Black.png" />
+    <None Remove="ImageResources\Icons\Maximize-Window-White-128.png" />
+    <None Remove="ImageResources\Icons\Maximize-Window-White-256.png" />
+    <None Remove="ImageResources\Icons\Maximize-Window-White-64.png" />
+    <None Remove="ImageResources\Icons\Maximize-Window-White.png" />
+    <None Remove="ImageResources\Icons\Minimize-Window-Black-256.png" />
+    <None Remove="ImageResources\Icons\Minimize-Window-Black-64.png" />
+    <None Remove="ImageResources\Icons\Minimize-Window-Black.png" />
+    <None Remove="ImageResources\Icons\Minimize-Window-White-256.png" />
+    <None Remove="ImageResources\Icons\Minimize-Window-White-64.png" />
+    <None Remove="ImageResources\Icons\Minimize-Window-White.png" />
+    <None Remove="ImageResources\Icons\Restore-Window-Black-128.png" />
+    <None Remove="ImageResources\Icons\Restore-Window-Black-256.png" />
+    <None Remove="ImageResources\Icons\Restore-Window-Black-32.png" />
+    <None Remove="ImageResources\Icons\Restore-Window-Black-64.png" />
+    <None Remove="ImageResources\Icons\Restore-Window-Black.png" />
+    <None Remove="ImageResources\Icons\Restore-Window-White-128.png" />
+    <None Remove="ImageResources\Icons\Restore-Window-White-256.png" />
+    <None Remove="ImageResources\Icons\Restore-Window-White-64.png" />
+    <None Remove="ImageResources\Icons\Restore-Window-White.png" />
+    <None Remove="ImageResources\Icons\Sample.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ImageResources\Icons\hnet.com-image.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleUIElements\SimpleUIElements.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="ImageResources\Icons\Application-Icon.png" />
+    <Resource Include="ImageResources\Icons\Better-Application-Icon-128.png" />
+    <Resource Include="ImageResources\Icons\Better-Application-Icon-16.png" />
+    <Resource Include="ImageResources\Icons\Better-Application-Icon-256.png" />
+    <Resource Include="ImageResources\Icons\Better-Application-Icon-32.png" />
+    <Resource Include="ImageResources\Icons\Better-Application-Icon-64.png" />
+    <Resource Include="ImageResources\Icons\Close-Window-Black-256.png" />
+    <Resource Include="ImageResources\Icons\Close-Window-Black-64.png" />
+    <Resource Include="ImageResources\Icons\Close-Window-White-256.png" />
+    <Resource Include="ImageResources\Icons\Close-Window-White-64.png" />
+    <Resource Include="ImageResources\Icons\Maximize-Window-Black-128.png" />
+    <Resource Include="ImageResources\Icons\Maximize-Window-Black-256.png" />
+    <Resource Include="ImageResources\Icons\Maximize-Window-Black-64.png" />
+    <Resource Include="ImageResources\Icons\Maximize-Window-White-128.png" />
+    <Resource Include="ImageResources\Icons\Maximize-Window-White-256.png" />
+    <Resource Include="ImageResources\Icons\Maximize-Window-White-64.png" />
+    <Resource Include="ImageResources\Icons\Minimize-Window-Black-256.png" />
+    <Resource Include="ImageResources\Icons\Minimize-Window-Black-64.png" />
+    <Resource Include="ImageResources\Icons\Minimize-Window-White-256.png" />
+    <Resource Include="ImageResources\Icons\Minimize-Window-White-64.png" />
+    <Resource Include="ImageResources\Icons\Restore-Window-Black-128.png" />
+    <Resource Include="ImageResources\Icons\Restore-Window-Black-256.png" />
+    <Resource Include="ImageResources\Icons\Restore-Window-Black-32.png" />
+    <Resource Include="ImageResources\Icons\Restore-Window-Black-64.png" />
+    <Resource Include="ImageResources\Icons\Restore-Window-White-128.png" />
+    <Resource Include="ImageResources\Icons\Restore-Window-White-256.png" />
+    <Resource Include="ImageResources\Icons\Restore-Window-White-64.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ImageResources\Icons\Better-Application-Icon-128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

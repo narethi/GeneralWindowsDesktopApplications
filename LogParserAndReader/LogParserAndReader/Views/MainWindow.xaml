@@ -1,12 +1,16 @@
-﻿<Window x:Class="LogParserAndReader.Views.MainWindow"
+﻿<SimpleUIElements:CustomCaptionWindow
+        x:Class="LogParserAndReader.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LogParserAndReader" xmlns:views="clr-namespace:LogParserAndReader.Views"
+        xmlns:local="clr-namespace:LogParserAndReader"
+        xmlns:views="clr-namespace:LogParserAndReader.Views" 
+        xmlns:SimpleUIElements="clr-namespace:SimpleUIElements.Views;assembly=SimpleUIElements"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        ResizeMode="CanResize"
+        Title="MainWindow" Height="450" Width="800" Background="White">
     <StackPanel>
         <views:LogListControl LogsController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LogsController}"/>
     </StackPanel>
-</Window>
+</SimpleUIElements:CustomCaptionWindow>
