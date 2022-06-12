@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace SimpleUIElements.Views
 {
     public class CustomCaptionWindow : Window
     {
-        public CustomCaptionWindow()
+        protected UIElement _captionBarControl;
+        public UIElement CaptionBarControl => _captionBarControl;
+
+        public CustomCaptionWindow(UIElement? captionBarControl = null)
         {
             var myResourceDictionary = new ResourceDictionary();
             myResourceDictionary.Source =
@@ -18,6 +17,8 @@ namespace SimpleUIElements.Views
             var windowStyle = myResourceDictionary[nameof(CustomCaptionWindow)];
             if (windowStyle != null)
                 Style = (Style)windowStyle;
+
+            _captionBarControl = captionBarControl ?? new();
         }
     }
 }

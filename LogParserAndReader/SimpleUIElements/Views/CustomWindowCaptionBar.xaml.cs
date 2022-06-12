@@ -12,6 +12,8 @@ namespace SimpleUIElements.Views
     /// </summary>
     public partial class CustomWindowCaptionBar : UserControl
     {
+        private double _lastValidWidth = 0;
+        private readonly CustomWindowCaptionBarViewModel _viewModel = new();
         private Window? _parentWindow;
 
         public Window ParentWindow
@@ -26,13 +28,38 @@ namespace SimpleUIElements.Views
             }
         }
 
-        private double _lastValidWidth = 0;
-        private readonly CustomWindowCaptionBarViewModel _viewModel = new();
         public CustomWindowCaptionBar()
         {
             InitializeComponent();
             DataContext = _viewModel;
         }
+
+        #region Dependency Properties
+
+        public static readonly DependencyProperty CaptionCustomControlProperty =
+            DependencyProperty.Register(nameof(CaptionCustomControl),
+            typeof(UIElement),
+            typeof(CustomWindowCaptionBar), new FrameworkPropertyMetadata() { PropertyChangedCallback = OnDependencyPropertyChanged }
+        );
+
+        private static void OnDependencyPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (sender is CustomWindowCaptionBar control)
+            {
+                if (e.Property.Name.Equals(nameof(CaptionCustomControl)))
+                {
+                    control._viewModel.CaptionCustomControl = (UIElement)e.NewValue;
+                }
+            }
+        }
+
+        public UIElement CaptionCustomControl
+        {
+            get => _viewModel.CaptionCustomControl;
+            set => SetValue(CaptionCustomControlProperty, value);
+        }
+
+        #endregion
 
         private void CustomWindowCaptionBar_StateChanged(object? sender, EventArgs e)
         {
@@ -101,6 +128,14 @@ namespace SimpleUIElements.Views
         private void RestoreWindowMenuItem_Click(object sender, RoutedEventArgs e)
         {
             ParentWindow.WindowState = WindowState.Normal;
+        }
+
+        private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(ParentWindow.WindowState == WindowState.Normal)
+                ParentWindow.WindowState = WindowState.Maximized;
+            else
+                ParentWindow.WindowState = WindowState.Normal;
         }
     }
 }

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SimpleUIElements.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="32" d:DesignWidth="250" Loaded="WindowSizeBar_Loaded" 
+             d:DesignHeight="32" d:DesignWidth="192" Loaded="WindowSizeBar_Loaded" 
              Unloaded="WindowSizeBar_UnLoaded" VerticalAlignment="Top">
     <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Top" Background="Transparent">
         <StackPanel.Resources>
