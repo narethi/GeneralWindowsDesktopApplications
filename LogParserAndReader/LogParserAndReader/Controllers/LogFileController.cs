@@ -1,30 +1,32 @@
 ﻿using LogParserAndReader.Models.LogFile;
 using LogParserAndReader.Parsers;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogParserAndReader.Controllers
 {
     public class LogFileController : INotifyPropertyChanged
     {
-        private LogFile _loadedFile;
+        public delegate void VoidHandler();
+        public event VoidHandler? LogFileLoaded;
+
+        private LogFile _loadedFile = new();
         public LogFile LoadedFile
         {
             get => _loadedFile;
             set 
             {
                 _loadedFile = value;
+                if(LogFileLoaded != null)
+                {
+                    LogFileLoaded();
+                }
                 OnPropertyChanged();
             }
         }
         public void ReadFile(string fileName)
         {
-            _loadedFile = LogFileParser.ReadLogsFromFile(fileName);
+            LoadedFile = LogFileParser.ReadLogsFromFile(fileName);
         }
 
         #region INotifyPropertyChanged Implementation

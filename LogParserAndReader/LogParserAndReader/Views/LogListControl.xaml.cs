@@ -26,7 +26,9 @@ namespace LogParserAndReader.Views
             typeof(LogListControl), new FrameworkPropertyMetadata() { PropertyChangedCallback = OnDependencyPropertyChanged }
         );
 
-
+        /// <summary>
+        /// This is the backing for the LogsControllerProperty
+        /// </summary>
         public LogFileController LogsController
         {
             get => _viewModel.LogsController;
@@ -82,8 +84,11 @@ namespace LogParserAndReader.Views
             {
                 if (e.Property.Name.Equals(nameof(LogsController)))
                 {
+                    if(control.LogsController != null)
+                        control._viewModel.LogsController.LogFileLoaded -= control.ConstructListControl;
                     control._viewModel.LogsController = (LogFileController)e.NewValue;
                     control.ConstructListControl();
+                    control._viewModel.LogsController.LogFileLoaded += control.ConstructListControl;
                 }
             }
         }

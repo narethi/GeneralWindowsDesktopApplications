@@ -1,19 +1,19 @@
 ﻿using LogParserAndReader.Controllers;
-using LogParserAndReader.Models.LogFile;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogParserAndReader.ViewModels
 {
+    /// <summary>
+    /// ViewModel that manages the data for the log list control
+    /// </summary>
     internal class LogListControlViewModel : INotifyPropertyChanged
     {
         private LogFileController _logsController;
 
+        /// <summary>
+        /// This is the log file controller, this should be the controller for the application
+        /// </summary>
         public LogFileController LogsController
         { 
             get => _logsController; 

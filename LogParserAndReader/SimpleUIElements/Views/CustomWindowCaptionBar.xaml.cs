@@ -16,6 +16,9 @@ namespace SimpleUIElements.Views
         private readonly CustomWindowCaptionBarViewModel _viewModel = new();
         private Window? _parentWindow;
 
+        /// <summary>
+        /// One way property that returns the parent window for this caption bar
+        /// </summary>
         public Window ParentWindow
         {
             get
@@ -78,6 +81,7 @@ namespace SimpleUIElements.Views
             ParentWindow.StateChanged += CustomWindowCaptionBar_StateChanged;
             ParentWindow.SizeChanged += CustomWindowCaptionBar_SizeChanged;
             _lastValidWidth = ParentWindow.ActualWidth;
+            _viewModel.WindowName = ParentWindow.Title;
         }
 
         private void CustomWindowCaptionBar_SizeChanged(object sender, SizeChangedEventArgs e)

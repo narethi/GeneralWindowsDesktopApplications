@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
+using SimpleUIElements.CustomRoutedEventArgs;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LogParserAndReader.Views
 {
@@ -23,6 +13,30 @@ namespace LogParserAndReader.Views
         public MainWindowMenuBar()
         {
             InitializeComponent();
+        }
+
+        #region RoutedEvents
+
+        public static readonly RoutedEvent OpenFileEvent = 
+            EventManager.RegisterRoutedEvent(nameof(OpenFile), RoutingStrategy.Bubble, typeof(RoutedEventHandler),typeof(MainWindowMenuBar));
+
+        public event RoutedEventHandler OpenFile
+        {
+            add { AddHandler(OpenFileEvent, value); }
+            remove { RemoveHandler(OpenFileEvent, value); }
+        }
+
+        #endregion
+        
+        private void OpenLogFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var logfileName = openFileDialog.FileName;
+                var openFileEventArgs = new StringParamRoutedEventArgs(OpenFileEvent, logfileName);
+                RaiseEvent(openFileEventArgs);
+            }
         }
     }
 }

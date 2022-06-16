@@ -1,11 +1,8 @@
 ﻿using LogParserAndReader.Models.LogFile;
 using LogParserAndReader.Models.Template;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogParserAndReader.Parsers
 {

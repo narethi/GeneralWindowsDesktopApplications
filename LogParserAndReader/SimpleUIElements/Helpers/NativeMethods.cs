@@ -3,9 +3,12 @@ using System.Runtime.InteropServices;
 
 namespace SimpleUIElements.Helpers
 {
-    static class NativeMethods
+    /// <summary>
+    /// This contains native methods imported from user32 that are useful for some UI operations
+    /// </summary>
+    public static class NativeMethods
     {
-        [DllImport("User32.dll")]
+        [DllImport("user32.dll")]
         private static extern bool SetCursorPos(int X, int Y);
 
         [DllImport("user32.dll")]
@@ -18,6 +21,9 @@ namespace SimpleUIElements.Helpers
         public static extern bool GetCursorPos(ref POINT lpPoint);
     }
 
+    /// <summary>
+    /// Required by some native methods
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct POINT
     {

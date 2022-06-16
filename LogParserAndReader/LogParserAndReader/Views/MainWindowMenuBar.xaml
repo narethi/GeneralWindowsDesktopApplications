@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:LogParserAndReader.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="This is from the control"/>
-    </Grid>
+    <Menu Background="Transparent">
+        <MenuItem Header="_File">
+            <MenuItem Header="_Open Log" Click="OpenLogFile_Click"/>
+        </MenuItem>
+    </Menu>
 </UserControl>

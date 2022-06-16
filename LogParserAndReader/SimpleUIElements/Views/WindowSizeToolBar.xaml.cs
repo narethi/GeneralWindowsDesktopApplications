@@ -2,7 +2,6 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace SimpleUIElements.Views
 {
@@ -12,6 +11,7 @@ namespace SimpleUIElements.Views
     public partial class WindowSizeToolBar : UserControl
     {
         private readonly WindowSizeToolBarViewModel _viewModel = new();
+
         public WindowSizeToolBar()
         {
             InitializeComponent();

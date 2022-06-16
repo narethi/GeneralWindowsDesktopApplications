@@ -9,11 +9,16 @@ namespace LogParserAndReader.ViewModels
         private LogFileController _logsController;
         public LogFileController LogsController => _logsController;
 
-        private MainWindowViewModel() { }
+        private MainWindowViewModel() { _logsController = new(); }
 
         public MainWindowViewModel(LogFileController logsController) 
         {
             _logsController = logsController;
+        }
+
+        internal void OpenLogFile(string logfileName)
+        {
+            _logsController.ReadFile(logfileName);
         }
 
         #region INotifyPropertyChanged Implementation

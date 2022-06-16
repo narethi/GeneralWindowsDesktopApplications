@@ -1,6 +1,7 @@
 ﻿using LogParserAndReader.ViewModels;
+using SimpleUIElements.CustomRoutedEventArgs;
 using SimpleUIElements.Views;
-using System.Windows.Controls;
+using System.Windows;
 
 namespace LogParserAndReader.Views
 {
@@ -14,8 +15,18 @@ namespace LogParserAndReader.Views
         {
             _viewModel = viewModel;
             DataContext = _viewModel;
-            _captionBarControl = new MainWindowMenuBar();
+            var menu = new MainWindowMenuBar();
+            menu.OpenFile += Menu_OpenFile;
+            _captionBarControl = menu;
             InitializeComponent();
+        }
+
+        private void Menu_OpenFile(object sender, RoutedEventArgs e)
+        {
+            if(e is StringParamRoutedEventArgs stringParam)
+            {
+                _viewModel.OpenLogFile(stringParam.Value);
+            }
         }
     }
 }
