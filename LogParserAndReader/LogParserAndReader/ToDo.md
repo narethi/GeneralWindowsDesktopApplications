@@ -11,6 +11,10 @@
 * Move the DataTable to be stored in the LogListControlViewModel (What does this mean?)
 * New Nicer Icon
 * Start the Unit tests
+* Look into making tickets for myself in GitHub
+* Add in a comparison mode
+  * This can be multiple files opened at the same time
+  * This can be comparing two filters
 
 ### Completed 
 
