@@ -1,0 +1,1 @@
+<EntryDateTime:DateTime:{dafsd:Testing:asdfasdf}>{ }<ErrorLevel:Enum:{LogParserAndReader.Enums.ErrorValue}(WARNING|ERROR|INFORMATION)>{-}<ThreadId:Guid>{ }<Message:Message>{\r\n}

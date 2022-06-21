@@ -10,7 +10,5 @@
         mc:Ignorable="d"
         ResizeMode="CanResize"
         Title="MainWindow" Height="450" Width="800" Background="White">
-    <StackPanel>
-        <views:LogListControl LogsController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LogsController}"/>
-    </StackPanel>
+    <views:LogListControl LogsController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LogsController}"/>
 </SimpleUIElements:CustomCaptionWindow>

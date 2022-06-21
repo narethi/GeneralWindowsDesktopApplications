@@ -9,7 +9,7 @@ namespace LogParserAndReader.ViewModels
     /// </summary>
     internal class LogListControlViewModel : INotifyPropertyChanged
     {
-        private LogFileController _logsController;
+        private LogFileController? _logsController;
 
         /// <summary>
         /// This is the log file controller, this should be the controller for the application
