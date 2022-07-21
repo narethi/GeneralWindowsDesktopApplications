@@ -1,6 +1,7 @@
 ﻿using LogParserAndReader.ViewModels;
 using SimpleUIElements.CustomRoutedEventArgs;
 using SimpleUIElements.Views;
+using System;
 using System.Windows;
 
 namespace LogParserAndReader.Views
@@ -27,6 +28,10 @@ namespace LogParserAndReader.Views
             {
                 _viewModel.OpenLogFile(stringParam.Value);
             }
+        }
+
+        private void CheckBoxComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
         }
     }
 }

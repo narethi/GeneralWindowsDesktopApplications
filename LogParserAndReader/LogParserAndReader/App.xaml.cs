@@ -18,7 +18,8 @@ namespace LogParserAndReader
             {
                 var logFileController = new LogFileController();
                 logFileController.ReadFile("Test.Log");
-                var mainWindow = new MainWindow(new ViewModels.MainWindowViewModel(logFileController));
+                var filterController = new FilterController();
+                var mainWindow = new MainWindow(new ViewModels.MainWindowViewModel(logFileController, filterController));
                 mainWindow.Show();
             }
             else

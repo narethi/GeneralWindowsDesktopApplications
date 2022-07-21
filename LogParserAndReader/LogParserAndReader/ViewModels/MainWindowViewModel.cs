@@ -29,11 +29,15 @@ namespace LogParserAndReader.ViewModels
         private LogFileController _logsController;
         public LogFileController LogsController => _logsController;
 
-        private MainWindowViewModel() { _logsController = new(); }
+        private FilterController _filterController;
+        public FilterController FilterController => _filterController;
 
-        public MainWindowViewModel(LogFileController logsController) 
+        private MainWindowViewModel() { _logsController = new(); _filterController = new();  }
+
+        public MainWindowViewModel(LogFileController logsController, FilterController filterController) 
         {
             _logsController = logsController;
+            _filterController = filterController;
         }
 
         internal void OpenLogFile(string logfileName)

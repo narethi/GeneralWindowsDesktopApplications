@@ -5,6 +5,7 @@ namespace LogParserAndReader
 {
     /// <summary>
     /// This contains the list of public constants that can be used by template as log property types
+    /// TODO: This is a target for assembly import loading such that custom dlls can be made to match custom patterns
     /// </summary>
     public static class PropertyTypeStringConstants
     {

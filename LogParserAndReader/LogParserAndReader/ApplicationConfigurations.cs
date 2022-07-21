@@ -2,11 +2,14 @@
 using LogParserAndReader.Parsers;
 using System.Collections.Generic;
 using System.Linq;
+using static LogParserAndReader.Controllers.LogFileController;
 
 namespace LogParserAndReader
 {
     internal class ApplicationConfigurations
     {
+        public event VoidHandler? TemplateFileLoaded;
+
         #region Singleton Implementation
         
         private static ApplicationConfigurations? _instance = null;
@@ -35,6 +38,10 @@ namespace LogParserAndReader
         public bool ReadLogFileTemplateFromFile(string fileName)
         {
             _patternPropertyEntriesQueue = FileTemplateParser.ConstructPatternListFromFile(fileName);
+            if(TemplateFileLoaded != null)
+            {
+                TemplateFileLoaded.Invoke();
+            }
             return _patternPropertyEntriesQueue.Any();
         }
     }

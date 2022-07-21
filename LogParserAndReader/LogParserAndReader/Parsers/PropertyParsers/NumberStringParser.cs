@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LogParserAndReader.Parsers.PropertyParsers
+﻿namespace LogParserAndReader.Parsers.PropertyParsers
 {
     /// <summary>
-    /// Parses all number strings into formatted n
+    /// Parses all number strings into number objects
     /// </summary>
     internal static class NumberStringParser
     {

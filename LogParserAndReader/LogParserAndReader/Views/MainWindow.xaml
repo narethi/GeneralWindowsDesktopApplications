@@ -12,7 +12,10 @@
         ResizeMode="CanResize"
         Title="MainWindow" Height="450" Width="800" Background="White">
     <StackPanel>
-        <CustomUserControls:CheckBoxComboBox CheckBoxValues="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.TestItemsList}"/>
+        <CustomUserControls:CheckBoxComboBox 
+            SelectionChanged="CheckBoxComboBox_SelectionChanged"
+            CheckBoxValues="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.TestItemsList}"/>
+        <views:FilterControl FilterController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.FilterController}"/>
         <views:LogListControl LogsController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LogsController}"/>
     </StackPanel>
 </SimpleUIElements:CustomCaptionWindow>

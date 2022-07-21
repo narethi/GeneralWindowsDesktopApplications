@@ -133,6 +133,8 @@ namespace SimpleUIElements.Views.UserControls
                         SetCheckBoxValueWithDisabledChangeEvent((ComboBoxItem)parentPanel.Children[0], value.CheckBoxValue);
                 }
             }
+            var selectionEvent = new SelectionChangedEventArgs(SelectionChangedEvent, new List<string>(), new List<string>());
+            RaiseEvent(selectionEvent);
             OnPropertyChanged(nameof(DisplayedValue));
         }
 
