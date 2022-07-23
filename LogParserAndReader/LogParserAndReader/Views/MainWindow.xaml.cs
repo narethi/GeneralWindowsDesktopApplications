@@ -12,7 +12,7 @@ namespace LogParserAndReader.Views
     public partial class MainWindow : CustomCaptionWindow
     {
         private readonly MainWindowViewModel _viewModel;
-        public MainWindow(MainWindowViewModel viewModel)
+        internal MainWindow(MainWindowViewModel viewModel)
         {
             _viewModel = viewModel;
             DataContext = _viewModel;

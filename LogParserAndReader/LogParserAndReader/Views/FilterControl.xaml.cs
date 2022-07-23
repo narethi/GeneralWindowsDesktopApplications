@@ -24,50 +24,12 @@ namespace LogParserAndReader.Views
     /// </summary>
     public partial class FilterControl : UserControl, IDisposable
     {
-        private ApplicationConfigurations AppConfig => ApplicationConfigurations.Instance;
-
         private readonly FilterControlViewModel _viewModel = new();
         public FilterControl()
         {
             DataContext = _viewModel;
             InitializeComponent();
-            ApplicationConfigurations.Instance.TemplateFileLoaded += Instance_TemplateFileLoaded;
-            CreateFilterControl();
-        }
-
-        private void Instance_TemplateFileLoaded()
-        {
-            CreateFilterControl();
-        }
-
-        /// <summary>
-        /// Iterate through the available template items add a filter option for each template item
-        /// TODO: This is a target for assembly import loading such that custom dlls can be made to match custom patterns
-        /// </summary>
-        private void CreateFilterControl()
-        {
-            Content = new StackPanel();
-            ((StackPanel)Content).Children.Add(new TextBlock() { Text = "This is a test for construction" });
-            foreach(var templateEntry in AppConfig.LogFileTemplate)
-            {
-                switch(templateEntry.PropertyType)
-                {
-                    case PropertyTypeStringConstants.DateTimeString:
-                        break;
-                    case PropertyTypeStringConstants.GuidString:
-                        break;
-                    case PropertyTypeStringConstants.MessageString:
-                        break;
-                    case PropertyTypeStringConstants.NumberString:
-                        break;
-                    case PropertyTypeStringConstants.RegexString:
-                        break;
-                    case PropertyTypeStringConstants.EnumString:
-                        break;
-                    default:
-                        throw new InvalidTemplatePropertyTypeException() { PropertyType = templateEntry.PropertyType, PropertyName = templateEntry.PropertyName };
-                }
-            }
+            _viewModel.CreateFilterControl();
         }
 
         #region Dependency Properties
@@ -81,7 +43,7 @@ namespace LogParserAndReader.Views
         /// <summary>
         /// This is the backing for the LogsControllerProperty
         /// </summary>
-        public FilterController FilterController
+        public FilterController? FilterController
         {
             get => _viewModel.Controller;
             set => SetValue(FilterControllerProperty, value);
@@ -95,7 +57,7 @@ namespace LogParserAndReader.Views
             {
                 if (e.Property.Name.Equals(nameof(FilterController)))
                 {
-                    control._viewModel._controller = (FilterController)e.NewValue;
+                    control._viewModel.SetFilterController((FilterController)e.NewValue);
                 }
             }
         }
@@ -120,7 +82,7 @@ namespace LogParserAndReader.Views
         {
             if(disposing)
             {
-                ApplicationConfigurations.Instance.TemplateFileLoaded -= Instance_TemplateFileLoaded;
+                _viewModel.Dispose();
             }
         }
 

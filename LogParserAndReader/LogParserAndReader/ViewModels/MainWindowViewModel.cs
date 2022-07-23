@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace LogParserAndReader.ViewModels
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    internal class MainWindowViewModel : BaseViewModel
     {
         private List<CheckBoxComboBoxValue> _testItemsList = new()
         {
@@ -44,16 +44,5 @@ namespace LogParserAndReader.ViewModels
         {
             _logsController.ReadFile(logfileName);
         }
-
-        #region INotifyPropertyChanged Implementation
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        #endregion
     }
 }

@@ -29,7 +29,7 @@ namespace LogParserAndReader.Views
         /// <summary>
         /// This is the backing for the LogsControllerProperty
         /// </summary>
-        public LogFileController LogsController
+        public LogFileController? LogsController
         {
             get => _viewModel.LogsController;
             set => SetValue(LogsControllerProperty, value);    
@@ -65,14 +65,17 @@ namespace LogParserAndReader.Views
                 });
             }
 
-            foreach(var entry in LogsController.LoadedFile.LogFileEntries)
+            if(LogsController != null)
             {
-                var data = table.NewRow();
-                foreach (var column in entry.LogFileProperties)
+                foreach (var entry in LogsController.LoadedFile.LogFileEntries)
                 {
-                    data[table.Columns.IndexOf(column.PropertyName)] = column.PropertyValue;
+                    var data = table.NewRow();
+                    foreach (var column in entry.LogFileProperties)
+                    {
+                        data[table.Columns.IndexOf(column.PropertyName)] = column.PropertyValue;
+                    }
+                    table.Rows.Add(data);
                 }
-                table.Rows.Add(data);
             }
             
             LogEntryList.ItemsSource = table.DefaultView;
@@ -84,7 +87,7 @@ namespace LogParserAndReader.Views
             {
                 if (e.Property.Name.Equals(nameof(LogsController)))
                 {
-                    if(control.LogsController != null)
+                    if(control._viewModel.LogsController != null)
                         control._viewModel.LogsController.LogFileLoaded -= control.ConstructListControl;
                     control._viewModel.LogsController = (LogFileController)e.NewValue;
                     control.ConstructListControl();

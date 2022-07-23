@@ -4,8 +4,8 @@ namespace LogParserAndReader.Exceptions
 {
     internal class InvalidTemplatePropertyTypeException : Exception
     {
-        public string PropertyType { get; set; }
-        public string PropertyName { get; set; }
+        public string PropertyType { get; set; } = string.Empty;
+        public string PropertyName { get; set; } = string.Empty;
 
         public override string ToString()
         {
