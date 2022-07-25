@@ -1,5 +1,4 @@
 ﻿using LogParserAndReader.Controllers;
-using LogParserAndReader.Exceptions;
 using LogParserAndReader.ViewModels;
 using System;
 using System.Diagnostics;
@@ -22,10 +21,10 @@ namespace LogParserAndReader.Views
     /// - Would I want the grouping information to be added to the template?
     /// 
     /// </summary>
-    public partial class FilterControl : UserControl, IDisposable
+    public partial class FilterControlPanel : UserControl, IDisposable
     {
-        private readonly FilterControlViewModel _viewModel = new();
-        public FilterControl()
+        private readonly FilterControlPanelViewModel _viewModel = new();
+        public FilterControlPanel()
         {
             DataContext = _viewModel;
             InitializeComponent();
@@ -37,11 +36,11 @@ namespace LogParserAndReader.Views
         public static readonly DependencyProperty FilterControllerProperty =
             DependencyProperty.Register(nameof(FilterController),
             typeof(FilterController),
-            typeof(FilterControl), new FrameworkPropertyMetadata() { PropertyChangedCallback = OnDependencyPropertyChanged }
+            typeof(FilterControlPanel), new FrameworkPropertyMetadata() { PropertyChangedCallback = OnDependencyPropertyChanged }
 );
 
         /// <summary>
-        /// This is the backing for the LogsControllerProperty
+        /// This is the backing for the FilterControllerProperty
         /// </summary>
         public FilterController? FilterController
         {
@@ -53,7 +52,7 @@ namespace LogParserAndReader.Views
 
         private static void OnDependencyPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            if (sender is FilterControl control)
+            if (sender is FilterControlPanel control)
             {
                 if (e.Property.Name.Equals(nameof(FilterController)))
                 {
@@ -70,7 +69,7 @@ namespace LogParserAndReader.Views
             private string _created = Environment.StackTrace;
         #endif
 
-        ~FilterControl()
+        ~FilterControlPanel()
         {
             if (!_isDisposed)
             {

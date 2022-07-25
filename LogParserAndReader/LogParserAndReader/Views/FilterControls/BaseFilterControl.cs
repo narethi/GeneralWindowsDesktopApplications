@@ -13,6 +13,10 @@ namespace LogParserAndReader.Views.FilterControls
         public VoidDelegate ClickFunction => HideClick;
 
         private string _controlName = "Not Set";
+        
+        /// <summary>
+        /// This is the label for the filter control
+        /// </summary>
         public string ControlName
         {
             get => _controlName;
@@ -34,6 +38,9 @@ namespace LogParserAndReader.Views.FilterControls
                 Style = (Style)windowStyle;
         }
 
+        /// <summary>
+        /// This is the click function used to hide and show the filter control
+        /// </summary>
         private void HideClick()
         {
             Debug.WriteLine("Button pushed");

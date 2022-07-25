@@ -15,7 +15,7 @@
         <CustomUserControls:CheckBoxComboBox 
             SelectionChanged="CheckBoxComboBox_SelectionChanged"
             CheckBoxValues="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.TestItemsList}"/>
-        <views:FilterControl FilterController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.FilterController}"/>
+        <views:FilterControlPanel FilterController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.FilterController}"/>
         <views:LogListControl LogsController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LogsController}"/>
     </StackPanel>
 </SimpleUIElements:CustomCaptionWindow>

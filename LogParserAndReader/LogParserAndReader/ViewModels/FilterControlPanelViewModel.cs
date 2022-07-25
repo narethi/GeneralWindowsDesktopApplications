@@ -1,5 +1,4 @@
 ﻿using LogParserAndReader.Controllers;
-using LogParserAndReader.Exceptions;
 using LogParserAndReader.Factories;
 using System;
 using System.Diagnostics;
@@ -8,13 +7,16 @@ using System.Windows.Controls;
 
 namespace LogParserAndReader.ViewModels
 {
-    internal class FilterControlViewModel : BaseViewModel, IDisposable
+    /// <summary>
+    /// This is the panel that contains all of the controls for filtering the log list
+    /// </summary>
+    internal class FilterControlPanelViewModel : BaseViewModel, IDisposable
     {
         private ApplicationConfigurations AppConfig => ApplicationConfigurations.Instance;
         private FilterController? _controller;
         public FilterController? Controller => _controller;
 
-        public FilterControlViewModel()
+        public FilterControlPanelViewModel()
         {
             AppConfig.TemplateFileLoaded += Instance_TemplateFileLoaded;
         }
@@ -26,6 +28,11 @@ namespace LogParserAndReader.ViewModels
 
         private UIElement _filterControls = new();
 
+        /// <summary>
+        /// This is the content of the content control, this is
+        /// constructed as a stack panel that contains all of the required
+        /// filter controls (as per listed in the log template)
+        /// </summary>
         public UIElement FilterControls
         {
             get => _filterControls;
@@ -70,7 +77,7 @@ namespace LogParserAndReader.ViewModels
                 private string _created = Environment.StackTrace;
         #endif
 
-        ~FilterControlViewModel()
+        ~FilterControlPanelViewModel()
         {
             if (!_isDisposed)
             {
