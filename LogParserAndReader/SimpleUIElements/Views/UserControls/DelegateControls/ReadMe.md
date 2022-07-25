@@ -1,0 +1,2 @@
+﻿# Read me
+This namespace contains controls where delegate dependency properties replace routed events. This is done as a way to allow custom UIElement classes to be able to be both a base class and have some structure, as laid out in the custom resources.

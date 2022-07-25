@@ -1,5 +1,6 @@
 ﻿using LogParserAndReader.Controllers;
 using LogParserAndReader.Exceptions;
+using LogParserAndReader.Factories;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -50,31 +51,10 @@ namespace LogParserAndReader.ViewModels
             panel.Orientation = Orientation.Horizontal;
             foreach (var templateEntry in AppConfig.LogFileTemplate)
             {
-                switch (templateEntry.PropertyType)
-                {
-                    case PropertyTypeStringConstants.DateTimeString:
-                        panel.Children.Add(new TextBlock() { Text = "This is the date time control" });
-                        break;
-                    case PropertyTypeStringConstants.GuidString:
-                        panel.Children.Add(new TextBlock() { Text = "This is the GUID Filter control" });
-                        break;
-                    case PropertyTypeStringConstants.MessageString:
-                        panel.Children.Add(new TextBlock() { Text = "This is the Message string Filter control" });
-                        break;
-                    case PropertyTypeStringConstants.NumberString:
-                        panel.Children.Add(new TextBlock() { Text = "This is the Message string Filter control" });
-                        break;
-                    case PropertyTypeStringConstants.RegexString:
-                        panel.Children.Add(new TextBlock() { Text = "This is the Regex string Filter control" });
-                        break;
-                    case PropertyTypeStringConstants.EnumString:
-                        panel.Children.Add(new TextBlock() { Text = "This is the Enum string Filter control" });
-                        break;
-                    default:
-                        throw new InvalidTemplatePropertyTypeException() { PropertyType = templateEntry.PropertyType, PropertyName = templateEntry.PropertyName };
-                }
+                panel.Children.Add(FilterControlFactory.ConstructControl(templateEntry));
             }
             
+            //TODO: Update this to dispose the child controls, as this should always be a stack panel
             if(FilterControls is IDisposable disposableControl)
             {
                 disposableControl.Dispose();
@@ -102,6 +82,7 @@ namespace LogParserAndReader.ViewModels
         {
             if (disposing)
             {
+                //TODO: Update this to clean up the FilterControls
                 AppConfig.TemplateFileLoaded -= Instance_TemplateFileLoaded;
             }
         }

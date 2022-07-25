@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:filterControls="clr-namespace:LogParserAndReader.Views.FilterControls" xmlns:delegatecontrols="clr-namespace:SimpleUIElements.Views.UserControls.DelegateControls;assembly=SimpleUIElements">
+    <Style TargetType="{x:Type filterControls:BaseFilterControl}"  x:Key="BaseFilterControl" >
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type filterControls:BaseFilterControl}" >
+                    <Border BorderThickness="1" BorderBrush="black" Margin="2,2,2,2" Height="100" ToolTip="Placeholer tool tip" >
+                        <Grid Margin="3,3,3,3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ControlName}" Grid.Column="0"/>
+                                <delegatecontrols:DelegateButton ButtonContent="From The Template" 
+                                                                 Click="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ClickFunction}" 
+                                                                 Grid.Column="1"/>
+                            </Grid>
+                            <ContentPresenter Height="Auto" VerticalAlignment="Stretch" Grid.Row="1"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>   
+</ResourceDictionary>
