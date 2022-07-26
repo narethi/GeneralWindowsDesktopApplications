@@ -10,6 +10,8 @@ namespace LogParserAndReader.Views.FilterControls
 {
     public abstract class BaseFilterControl : UserControl, INotifyPropertyChanged
     {
+        private const int MaxControlWidth = 175;
+        private const int MinControlWidth = 38;
         public VoidDelegate ClickFunction => HideClick;
 
         private string _controlName = "Not Set";
@@ -26,6 +28,30 @@ namespace LogParserAndReader.Views.FilterControls
                 OnPropertyChanged();
             }
         }
+        private bool _controlHidden = false;
+        private int _controlWidth = MaxControlWidth;
+        public int ControlWidth
+        {
+            get => _controlWidth;
+            set
+            {
+                _controlWidth = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _buttonString = "v";
+        public string ButtonString
+        {
+            get => _buttonString;
+            set
+            {
+                _buttonString = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Visibility ControlHidden => _controlHidden ? Visibility.Collapsed : Visibility.Visible;
 
         protected BaseFilterControl()
         {
@@ -43,7 +69,18 @@ namespace LogParserAndReader.Views.FilterControls
         /// </summary>
         private void HideClick()
         {
-            Debug.WriteLine("Button pushed");
+            _controlHidden = !_controlHidden;
+            if(_controlHidden)
+            {
+                ControlWidth = MinControlWidth;
+                ButtonString = "^";
+            }
+            else
+            {
+                ControlWidth = MaxControlWidth;
+                ButtonString = "v";
+            }
+            OnPropertyChanged(nameof(ControlHidden));
         }
 
         #region INotifyPropertyChanged Implementation

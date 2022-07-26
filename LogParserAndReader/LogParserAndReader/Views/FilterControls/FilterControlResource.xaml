@@ -5,8 +5,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type filterControls:BaseFilterControl}" >
-                    <Border BorderThickness="1" BorderBrush="black" Margin="2,2,2,2" Height="100" ToolTip="Placeholer tool tip" >
-                        <Grid Margin="3,3,3,3">
+                    <Border BorderThickness="1" BorderBrush="black" Margin="2,2,2,2" Height="100"
+                            Width="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ControlWidth}"
+                            Background="#89FFFF"
+                            ToolTip="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ControlName}">
+                        <Grid Margin="3,0,3,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
@@ -16,12 +19,18 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition Width="30"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ControlName}" Grid.Column="0"/>
-                                <delegatecontrols:DelegateButton ButtonContent="From The Template" 
+                                <TextBlock VerticalAlignment="Center" 
+                                           Text="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ControlName}"
+                                           Visibility="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ControlHidden}"
+                                           Grid.Column="0"/>
+                                <delegatecontrols:DelegateButton Height="26"
+                                                                 ButtonContent="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ButtonString}" 
                                                                  Click="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ClickFunction}" 
                                                                  Grid.Column="1"/>
                             </Grid>
-                            <ContentPresenter Height="Auto" VerticalAlignment="Stretch" Grid.Row="1"/>
+                            <ContentPresenter Height="Auto" 
+                                              Visibility="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ControlHidden}"
+                                              VerticalAlignment="Stretch" Grid.Row="1"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>

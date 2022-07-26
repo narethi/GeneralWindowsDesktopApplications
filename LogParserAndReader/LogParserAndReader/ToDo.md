@@ -17,6 +17,7 @@
 * Add in a look ahead mechanism that can handle the separators existing in the previous section
 * Add in a log analyzer and reporting for logging
 * Add multi-monitor support
+* Write a tutorial on how to make a common base class for XAML based objects
 
 ### Completed 
 
