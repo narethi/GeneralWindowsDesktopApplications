@@ -8,9 +8,8 @@ using System.Windows.Controls;
 
 namespace LogParserAndReader.Views.FilterControls
 {
-    public abstract class BaseFilterControl : UserControl, INotifyPropertyChanged
+    public abstract class BaseFilterControl : UserControl, INotifyPropertyChanged, IDisposable
     {
-        private const int MaxControlWidth = 175;
         private const int MinControlWidth = 38;
         public VoidDelegate ClickFunction => HideClick;
 
@@ -29,7 +28,7 @@ namespace LogParserAndReader.Views.FilterControls
             }
         }
         private bool _controlHidden = false;
-        private int _controlWidth = MaxControlWidth;
+        private int _controlWidth = MinControlWidth;
         public int ControlWidth
         {
             get => _controlWidth;
@@ -62,6 +61,12 @@ namespace LogParserAndReader.Views.FilterControls
             var windowStyle = myResourceDictionary[nameof(BaseFilterControl)];
             if (windowStyle != null)
                 Style = (Style)windowStyle;
+            Loaded += BaseFilterControl_Loaded;
+        }
+
+        private void BaseFilterControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            ControlWidth = (int)this.MaxWidth;
         }
 
         /// <summary>
@@ -77,7 +82,7 @@ namespace LogParserAndReader.Views.FilterControls
             }
             else
             {
-                ControlWidth = MaxControlWidth;
+                ControlWidth = (int)this.MaxWidth - 5;
                 ButtonString = "v";
             }
             OnPropertyChanged(nameof(ControlHidden));
@@ -90,6 +95,41 @@ namespace LogParserAndReader.Views.FilterControls
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
+
+        #region IDisposable Implementation
+
+        private bool _isDisposed = false;
+
+        #if DEBUG
+        
+        private string _created = Environment.StackTrace;
+        
+        #endif
+
+        ~BaseFilterControl()
+        {
+            if (!_isDisposed)
+            {
+                Debug.Assert(false, $"Failed to dispose the {GetType()}");
+            }
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                //TODO: Update this to clean up the FilterControls
+                Loaded -= BaseFilterControl_Loaded; ;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         #endregion

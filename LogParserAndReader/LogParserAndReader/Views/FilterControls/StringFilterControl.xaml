@@ -5,6 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LogParserAndReader.Views.FilterControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <TextBlock Text="This is the control content" />
+             d:DesignHeight="450" d:DesignWidth="800" MaxWidth="250">
+    <Grid Margin="0,0,0,2">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding FilterValue}" Margin="0,0,2,0"/>
+            <Button Grid.Column="1" Content="Add" Click="AddNewFilterItem_Click"/>
+        </Grid>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Strings}"
+                  SelectionMode="Extended"
+                  SelectionChanged="ListView_SelectionChanged"
+                  Margin="0,2,0,2" ScrollViewer.CanContentScroll="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" ToolTip="{Binding}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Row="2" Content="Remove Selected" Click="RemoveSelectedItems_Click"/>
+    </Grid>
 </local:BaseFilterControl>

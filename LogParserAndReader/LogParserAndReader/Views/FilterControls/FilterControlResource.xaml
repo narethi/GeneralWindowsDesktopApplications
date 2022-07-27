@@ -2,14 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:filterControls="clr-namespace:LogParserAndReader.Views.FilterControls" xmlns:delegatecontrols="clr-namespace:SimpleUIElements.Views.UserControls.DelegateControls;assembly=SimpleUIElements">
     <Style TargetType="{x:Type filterControls:BaseFilterControl}"  x:Key="BaseFilterControl" >
+        <Setter Property="Margin" Value="1,1,1,1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type filterControls:BaseFilterControl}" >
-                    <Border BorderThickness="1" BorderBrush="black" Margin="2,2,2,2" Height="100"
+                    <Border BorderThickness="1" BorderBrush="black" MaxHeight="450"
                             Width="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ControlWidth}"
                             Background="#89FFFF"
                             ToolTip="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ControlName}">
-                        <Grid Margin="3,0,3,0">
+                        <Grid Margin="3,5,3,0" VerticalAlignment="Top">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
@@ -29,6 +30,7 @@
                                                                  Grid.Column="1"/>
                             </Grid>
                             <ContentPresenter Height="Auto" 
+                                              Margin="0,5,0,0"
                                               Visibility="{Binding RelativeSource={RelativeSource AncestorType=filterControls:BaseFilterControl}, Path=ControlHidden}"
                                               VerticalAlignment="Stretch" Grid.Row="1"/>
                         </Grid>

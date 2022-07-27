@@ -55,6 +55,8 @@ namespace LogParserAndReader.ViewModels
         public void CreateFilterControl()
         {
             var panel = new StackPanel();
+            panel.HorizontalAlignment = HorizontalAlignment.Stretch;
+            panel.CanHorizontallyScroll = true;
             panel.Orientation = Orientation.Horizontal;
             foreach (var templateEntry in AppConfig.LogFileTemplate)
             {
