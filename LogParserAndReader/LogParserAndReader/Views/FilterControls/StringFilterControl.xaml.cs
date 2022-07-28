@@ -1,4 +1,5 @@
-﻿using LogParserAndReader.ViewModels;
+﻿using LogParserAndReader.Models.Template;
+using LogParserAndReader.ViewModels;
 using System.Collections.Generic;
 
 namespace LogParserAndReader.Views.FilterControls
@@ -9,7 +10,7 @@ namespace LogParserAndReader.Views.FilterControls
     public partial class StringFilterControl : BaseFilterControl
     {
         private StringFilterControlViewModel _viewModel = new();
-        public StringFilterControl()
+        public StringFilterControl(PropertyPatternEntry propertyPattern) : base(propertyPattern)
         {
             InitializeComponent();
             DataContext = _viewModel;

@@ -1,0 +1,14 @@
+﻿<local:BaseFilterControl x:Class="LogParserAndReader.Views.FilterControls.EnumFilterControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LogParserAndReader.Views.FilterControls"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800" MaxWidth="200"
+             xmlns:CustomUserControls="clr-namespace:SimpleUIElements.Views.UserControls;assembly=SimpleUIElements">
+    <Grid>
+        <CustomUserControls:CheckBoxComboBox 
+            SelectionChanged="CheckBoxComboBox_SelectionChanged"
+            CheckBoxValues="{Binding RelativeSource={RelativeSource AncestorType=local:EnumFilterControl}, Path=DataContext.ItemsList}"/>
+    </Grid>
+</local:BaseFilterControl>

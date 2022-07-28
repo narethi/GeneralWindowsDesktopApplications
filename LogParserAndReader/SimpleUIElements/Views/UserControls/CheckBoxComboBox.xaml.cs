@@ -149,7 +149,7 @@ namespace SimpleUIElements.Views.UserControls
             {
                 if(e.Property.Name == nameof(CheckBoxValues))
                 {
-                    if(e.NewValue is List<CheckBoxComboBoxValue> values)
+                    if(e.NewValue is List<CheckBoxComboBoxValue> values && values.Any())
                     {
                         if(values[0].Label != AllLabel)
                         {

@@ -1,4 +1,5 @@
-﻿using SimpleUIElements.Delegates;
+﻿using LogParserAndReader.Models.Template;
+using SimpleUIElements.Delegates;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -11,23 +12,15 @@ namespace LogParserAndReader.Views.FilterControls
     public abstract class BaseFilterControl : UserControl, INotifyPropertyChanged, IDisposable
     {
         private const int MinControlWidth = 38;
+        protected readonly PropertyPatternEntry _propertyPattern;
+        private bool _controlHidden = false;
         public VoidDelegate ClickFunction => HideClick;
 
-        private string _controlName = "Not Set";
-        
         /// <summary>
         /// This is the label for the filter control
         /// </summary>
-        public string ControlName
-        {
-            get => _controlName;
-            set
-            {
-                _controlName = value;
-                OnPropertyChanged();
-            }
-        }
-        private bool _controlHidden = false;
+        public string ControlName => _propertyPattern.PropertyName;
+
         private int _controlWidth = MinControlWidth;
         public int ControlWidth
         {
@@ -52,7 +45,7 @@ namespace LogParserAndReader.Views.FilterControls
 
         public Visibility ControlHidden => _controlHidden ? Visibility.Collapsed : Visibility.Visible;
 
-        protected BaseFilterControl()
+        protected BaseFilterControl(PropertyPatternEntry propertyPattern)
         {
             var myResourceDictionary = new ResourceDictionary();
             myResourceDictionary.Source =
@@ -62,6 +55,7 @@ namespace LogParserAndReader.Views.FilterControls
             if (windowStyle != null)
                 Style = (Style)windowStyle;
             Loaded += BaseFilterControl_Loaded;
+            _propertyPattern = propertyPattern;
         }
 
         private void BaseFilterControl_Loaded(object sender, RoutedEventArgs e)

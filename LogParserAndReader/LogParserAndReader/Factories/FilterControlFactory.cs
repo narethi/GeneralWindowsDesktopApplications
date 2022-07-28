@@ -18,17 +18,17 @@ namespace LogParserAndReader.Factories
             switch (filterPattern.PropertyType)
             {
                 case PropertyTypeStringConstants.DateTimeString:
-                    return new StringFilterControl() { ControlName = filterPattern.PropertyName};
+                    return new StringFilterControl(filterPattern);
                 case PropertyTypeStringConstants.GuidString:
-                    return new StringFilterControl() { ControlName = filterPattern.PropertyName };
+                    return new StringFilterControl(filterPattern);
                 case PropertyTypeStringConstants.MessageString:
-                    return new StringFilterControl() { ControlName = filterPattern.PropertyName };
+                    return new StringFilterControl(filterPattern);
                 case PropertyTypeStringConstants.NumberString:
-                    return new StringFilterControl() { ControlName = filterPattern.PropertyName };
+                    return new StringFilterControl(filterPattern);
                 case PropertyTypeStringConstants.RegexString:
-                    return new StringFilterControl() { ControlName = filterPattern.PropertyName };
+                    return new StringFilterControl(filterPattern);
                 case PropertyTypeStringConstants.EnumString:
-                    return new StringFilterControl() { ControlName = filterPattern.PropertyName };
+                    return new EnumFilterControl(filterPattern);
                 default:
                     throw new InvalidTemplatePropertyTypeException() { PropertyType = filterPattern.PropertyType, PropertyName = filterPattern.PropertyName };
             }

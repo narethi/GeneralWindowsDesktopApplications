@@ -29,9 +29,5 @@ namespace LogParserAndReader.Views
                 _viewModel.OpenLogFile(stringParam.Value);
             }
         }
-
-        private void CheckBoxComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-        }
     }
 }

@@ -7,15 +7,11 @@
         xmlns:local="clr-namespace:LogParserAndReader"
         xmlns:views="clr-namespace:LogParserAndReader.Views" 
         xmlns:SimpleUIElements="clr-namespace:SimpleUIElements.Views;assembly=SimpleUIElements"
-        xmlns:CustomUserControls="clr-namespace:SimpleUIElements.Views.UserControls;assembly=SimpleUIElements"
         mc:Ignorable="d"
         ResizeMode="CanResize"
         Title="MainWindow" Height="450" Width="800" Background="White">
     <StackPanel>
-        <CustomUserControls:CheckBoxComboBox 
-            SelectionChanged="CheckBoxComboBox_SelectionChanged"
-            CheckBoxValues="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.TestItemsList}"/>
-        <views:FilterControlPanel FilterController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.FilterController}"/>
+                <views:FilterControlPanel FilterController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.FilterController}"/>
         <views:LogListControl LogsController="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LogsController}"/>
     </StackPanel>
 </SimpleUIElements:CustomCaptionWindow>
